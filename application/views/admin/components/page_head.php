@@ -16,9 +16,9 @@
             <li class="active"><a href="index.html"><i class="fa fa-dashboard"></i> Dashboard</a></li>
             <li class="dropdown"><a href="arnosa.net" class="dropdown-toggle" data-toggle="dropdown">Entry Data<b class="caret"></b></a>
                 <ul class="dropdown-menu">
-                    <li><a href="<?php echo base_url('index.php/admin/kelas/'); ?>">Data Class Room Hotel</a></li>
-                    <li><a href="<?php echo base_url('index.php/admin/rooms'); ?>">Data Kamar</a></li>
-                    <li><a href="<?php echo base_url('index.php/admin/promo'); ?>">Data Promo</a></li>
+                    <li><a href="<?php echo base_url('/admin/kelas/'); ?>">Data Class Room Hotel</a></li>
+                    <li><a href="<?php echo base_url('/admin/rooms'); ?>">Data Kamar</a></li>
+                    <li><a href="<?php echo base_url('/admin/promo'); ?>">Data Promo</a></li>
                     <li class="divider"></li>
                     <li><a href="<?php echo site_url('admin/news'); ?>">Data News/Article</a></li>
                     <li><a href="<?php echo site_url('admin/restaurant'); ?>">Restaurant</a></li>
@@ -26,16 +26,16 @@
             </li>
             <li class="dropdown"><a href="arnosa.net" class="dropdown-toggle" data-toggle="dropdown">Orders & Users<b class="caret"></b></a>
                 <ul class="dropdown-menu">
-                    <li><a href="<?php echo base_url('index.php/admin/order/'); ?>">All Order</a></li>
+                    <li><a href="<?php echo base_url('/admin/order/'); ?>">All Order</a></li>
                     <li class="divider"></li>
                     <li><a href="<?php echo site_url('admin/users'); ?>">All Users</a></li>
                 </ul>
             </li>
             <li class="dropdown"><a href="arnosa.net" class="dropdown-toggle" data-toggle="dropdown">Setting Web<b class="caret"></b></a>
                 <ul class="dropdown-menu">
-                    <li><a href="<?php echo base_url('index.php/admin/pages/'); ?>">Halaman</a></li>
-                    <li><a href="<?php echo base_url('index.php/admin/slider/'); ?>">Slides Gallery</a></li>
-                    <li><a href="<?php echo base_url('index.php/admin/options/'); ?>">Options</a></li>
+                    <li><a href="<?php echo base_url('/admin/pages/'); ?>">Halaman</a></li>
+                    <li><a href="<?php echo base_url('/admin/slider/'); ?>">Slides Gallery</a></li>
+                    <li><a href="<?php echo base_url('/admin/options/'); ?>">Options</a></li>
                 </ul>
             </li>
         </ul>

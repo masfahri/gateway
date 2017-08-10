@@ -3,6 +3,9 @@
         var selectBox = document.getElementById("selectBox");
         var selectedValue = selectBox.options[selectBox.selectedIndex].value;
         window.location = '?id=' + selectedValue;
+        if (selectBox.options[selectBox.selectedIndex].value == "<?php echo $kantin[1]['id_kategori_kantin']; ?>") {
+        selectBox.attr("selected", 'selected');
+    }
     }
 </script>
 <div class="page-header">
@@ -17,12 +20,9 @@
         <label for="inputJab" class="col-lg-2 control-label">Pilih Kelas</label>
         <div class="col-lg-7">
             <select name="id_kategori_kantin" class="form-control"  id ="selectBox" onChange="changeFunc()">
-<!--                 <?php
-                echo '<option value="' . $kat_kantin->id_kategori_kantin . '">' . $kat_kantin->id_kategori_kantin  . '</option>';
-                ?> -->
                 <option value="">- please select -</option>
                 <?php foreach ($kat_kantin as $kategori) : ?>
-                    <option value="<?php echo $kategori['id_kategori_kantin']; ?>"><?php echo $kategori['nama_kategori_kantin']; ?></option>
+                    <option value="<?php echo $kategori['id_kategori_kantin']; ?>" <?php if ($kategori['id_kategori_kantin'] == $kantin[1]['id_kategori_kantin']) {echo "selected";}  ?>><?php echo $kategori['nama_kategori_kantin']; ?></option>
                     <?php
                 endforeach;
                 ?>
@@ -36,7 +36,7 @@
                 <?php
                 $attr = attr(array('form-control', 'input_jumlah', 'jumlah', 'number', '1-100', 'jumlah harus berisi angka'));
                 ?>
-                <?php echo form_input($attr, set_value('jumlah', $jumlah)); ?>
+                <?php echo form_input($attr, set_value('jumlah', $hitung->itung)); ?>
             </div>
         </div>
         <div class="form-group">

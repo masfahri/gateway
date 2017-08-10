@@ -1,7 +1,7 @@
 <div class="page-header">
     <h1>Data News & Artikel</h1>
 </div>
-<a href="<?php echo base_url('index.php/admin/news/add'); ?>" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#telo">
+<a href="<?php echo base_url('/admin/news/add'); ?>" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#telo">
     Tambah Data
 </a>
 <br /><br />
@@ -21,12 +21,12 @@
             foreach ($news as $p) :
                 ?>
                 <tr>
-                    <td><?php echo $p->title; ?></td>
-                    <td><?php echo $p->create_by; ?></td>
-                    <td><?php echo $p->create_date; ?></td>
+                    <td><?php echo $p['title']; ?></td>
+                    <td><?php echo $p['create_by']; ?></td>
+                    <td><?php echo $p['create_date']; ?></td>
                     <td>
-                        <a href="<?php echo base_url('index.php/admin/news/edit/' . $p->post_id); ?>" class="btn btn-default btn-xs btn-primary" data-target="#telo" role="button" data-toggle="modal"><span class="glyphicon glyphicon-edit"></span> Edit</a>
-                        <?php echo btn_delete('admin/news/delete/' . $p->post_id); ?>
+                        <a href="<?php echo base_url('admin/news/edit/' . $p['post_id']); ?>" class="btn btn-default btn-xs btn-primary" data-target="#telo" role="button" data-toggle="modal"><span class="glyphicon glyphicon-edit"></span> Edit</a>
+                        <?php echo btn_delete('admin/news/delete/' . $p['post_id']); ?>
                     </td>
                 </tr>
                 <?php

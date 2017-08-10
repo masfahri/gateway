@@ -50,6 +50,18 @@ class M_restaurant extends MY_Model {
         }else return null;
     }
 
+    public function countKantin($id_kategori_kantin)
+    {
+        $this->db->select('count(*) as itung');
+        $this->db->from('kantin');
+
+        $this->db->where('id_kategori_kantin', $id_kategori_kantin);
+        $query = $this->db->get();
+        if ($query->num_rows() > 0) {
+            return $query->result()[0];
+        }else return null;    
+    }
+
 }
 
 ?>
