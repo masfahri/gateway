@@ -10,10 +10,6 @@
             <hr>
         <?php endforeach; ?>
     <?php else: ?>
-        <?php 
-            $sql=mysql_query("SELECT * FROM kantin ");
-            $row=mysql_num_rows($sql); 
-                if ($row > 0) { ?>
         <?php foreach ($all as $n): ?>
         <div class="col-md-6">
             <div id="<?php echo $n['id_kategori_kantin']; ?>">
@@ -26,7 +22,7 @@
                 <hr>
             </div>
         </div>
-         <?php endforeach; } ?>
+         <?php endforeach; ?>
     <?php endif; ?>
 <?php endif; ?>
 </div>

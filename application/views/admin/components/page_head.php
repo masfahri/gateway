@@ -21,6 +21,7 @@
                     <li><a href="<?php echo base_url('index.php/admin/promo'); ?>">Data Promo</a></li>
                     <li class="divider"></li>
                     <li><a href="<?php echo site_url('admin/news'); ?>">Data News/Article</a></li>
+                    <li><a href="<?php echo site_url('admin/restaurant'); ?>">Restaurant</a></li>
                 </ul>
             </li>
             <li class="dropdown"><a href="arnosa.net" class="dropdown-toggle" data-toggle="dropdown">Orders & Users<b class="caret"></b></a>
