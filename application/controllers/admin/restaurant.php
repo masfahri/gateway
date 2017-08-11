@@ -20,7 +20,15 @@ class Restaurant extends Admin_Controller {
             $this->data['kantin']  =  $this->m_restaurant->get_one_kantin($_GET['id']);
             $this->data['hitung'] = $this->m_restaurant->countKantin($_GET['id']);
         }
-
+        if ($this->input->post('add')) {
+            $id_kategori_kantin= $this->input->post('id_kategori_kantin');
+                $data = array(
+                    'id_kategori_kantin' => $id_kategori_kantin,
+                    'nama_makanan' => $this->input->post('nama_makanan'));
+                $this->m_restaurant->add($data);
+            $this->session->set_flashdata('success', 'Makanan Terupdated');
+            redirect('admin/restaurant');
+        }
 
         $this->data['content'] = 'admin/restaurant/index';
         $this->load->view($this->template, $this->data);

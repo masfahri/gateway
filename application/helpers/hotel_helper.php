@@ -130,6 +130,12 @@ function tgl_indo($tgl) {
 }
 
 function attr($attributes = array()) {
+    $data = array('class', 'id', 'name', 'data-validation', 'data-validation-length', 'data-validation-error-msg', 'disabled');
+    $newarray = array_combine($data, $attributes);
+    return $newarray;
+}
+
+function attrName($attributes = array()) {
     $data = array('class', 'id', 'name', 'data-validation', 'data-validation-length', 'data-validation-error-msg');
     $newarray = array_combine($data, $attributes);
     return $newarray;

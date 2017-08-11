@@ -62,6 +62,11 @@ class M_restaurant extends MY_Model {
         }else return null;    
     }
 
+    public function add($data)
+    {
+        $this->db->insert('kantin', $data);
+    }
+
 }
 
 ?>

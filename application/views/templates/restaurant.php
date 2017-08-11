@@ -17,7 +17,7 @@
                 <img class="" src="<?php echo empty($n['foto_makanan']) || $n['foto_makanan'] == "" ? 'http://placehold.it/390x325&text=Makanan' : base_url('assets/img/thumbnails/' . $n['foto_makanan']); ?>" alt="<?php echo $n['nama_makanan']; ?>">
                 <p><?php echo ucfirst(limit_to_numwords($n['harga_makanan'], 100)); ?></p>
                 <div>
-                    <span class="badge" style="  width: 250px;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;">Posted <?php echo $n['deskripsi_makanan']; ?></span>
+                    <span class="badge" style=" width: 250px;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;">Posted <?php echo $n['deskripsi_makanan']; ?></span>
                 </div>  </center>       
                 <hr>
             </div>
