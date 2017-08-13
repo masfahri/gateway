@@ -33,4 +33,10 @@ class Restaurant extends Admin_Controller {
         $this->data['content'] = 'admin/restaurant/index';
         $this->load->view($this->template, $this->data);
     }
+
+    public function aktif($idclass = 0, $id = 0, $aktif = 0) {
+        $id OR redirect(site_url('admin/restaurant'));
+        $this->m_restaurant->update(array('status' => $aktif), $id);
+        redirect(site_url('admin/restaurant?id=' . $idclass));
+    }
 }

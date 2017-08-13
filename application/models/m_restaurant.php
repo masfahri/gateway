@@ -15,6 +15,8 @@ class M_restaurant extends MY_Model {
     //put your code here
     public function __construct() {
         parent::__construct();
+        parent::set_tabel('kantin', 'id_kantin');
+
     }
 
     public function kat_kantin()
@@ -54,7 +56,6 @@ class M_restaurant extends MY_Model {
     {
         $this->db->select('count(*) as itung');
         $this->db->from('kantin');
-
         $this->db->where('id_kategori_kantin', $id_kategori_kantin);
         $query = $this->db->get();
         if ($query->num_rows() > 0) {

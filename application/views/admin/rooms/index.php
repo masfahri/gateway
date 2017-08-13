@@ -14,7 +14,7 @@
     echo form_open_multipart('admin/rooms', $attributes);
     ?>
     <div class="form-group">
-        <label for="inputJab" class="col-lg-2 control-label">Pilih Kelas</label>
+        <label for="inputJab" class="col-lg-2 control-label">Pilih Kategori</label>
         <div class="col-lg-7">
             <select name="idclass" class="form-control"  id ="selectBox" onChange="changeFunc()">
                 <?php
@@ -31,7 +31,7 @@
     </div>
     <?php if (isset($_GET['id'])): ?>
         <div class="form-group">
-            <label for="inputJab" class="col-lg-2 control-label">Jumlah Room</label>
+            <label for="inputJab" class="col-lg-2 control-label">Nama Room</label>
             <div class="col-lg-3">
                 <?php
                 $attr = attr(array('form-control', 'input_jumlah', 'jumlah', 'number', '1-100', 'jumlah harus berisi angka'));

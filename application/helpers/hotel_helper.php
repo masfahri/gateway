@@ -82,6 +82,16 @@ function _toaktif($url = null, $id = null, $str = 0) {
     return $im;
 }
 
+function _toada($url = null, $idclass = null, $id = null, $str = 0) {
+    $im = "";
+    if ($str == "0") {
+        $im = '<a href = ' . site_url($url . $idclass . '/' . $id . '/1') . ' class="btn btn-default btn-xs btn-warning">Habis</a>';
+    } elseif ($str == "1") {
+        $im = '<a href = ' . site_url($url . $idclass . '/' . $id . '/0') . ' class="btn btn-default btn-xs btn-success">Ada</a>';
+    }
+    return $im;
+}
+
 function _tobooking($url = null, $idclass = null, $id = null, $str = 0) {
     $im = "";
     if ($str == "0") {
@@ -130,7 +140,7 @@ function tgl_indo($tgl) {
 }
 
 function attr($attributes = array()) {
-    $data = array('class', 'id', 'name', 'data-validation', 'data-validation-length', 'data-validation-error-msg', 'disabled');
+    $data = array('class', 'id', 'name', 'data-validation', 'data-validation-length', 'data-validation-error-msg');
     $newarray = array_combine($data, $attributes);
     return $newarray;
 }

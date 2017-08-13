@@ -64,12 +64,13 @@
         </div>
         <table class="table table-hover table-responsive">
             <thead>
-                <tr class="success">
+                <tr class="">
                     <th>Id Kantin</th>
                     <th>Nama Makanan</th>    
                     <th>Deskripsi Makanan</th>
                     <th>Harga</th>
                     <th>Foto Makanan</th>
+                    <th>Status</th>
                 </tr>
             </thead>
             <tbody>
@@ -89,6 +90,7 @@
                                 echo "<img src='http://placehold.it/90x90&text=MAKANAN'>" ;
                             }else{
                             echo "<img src='http://placehold.it/90x90&text=ADA FOTO'>"; }?></td>
+                            <td><?php echo _toada('admin/restaurant/aktif/', $r['id_kategori_kantin'], $r['id_kantin'], $r['status']); ?></td>
                         </tr>
                     <?php endforeach; ?>
                 <?php else: ?>

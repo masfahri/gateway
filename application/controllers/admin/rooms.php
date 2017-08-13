@@ -45,13 +45,11 @@ class Rooms extends Admin_Controller {
         }else if ($this->input->post('add')) {
             $jumlah = $this->input->post('jumlah');
             $namakmr= $this->input->post('namespace');
-            for ($i=1; $i <= $jumlah; $i++) { 
-                $data = array(
-                    'numbers' => $namakmr.'-'.$i,
-                    'idclass' => $this->input->post('idclass'),
-                    'namespace' => $this->input->post('namespace'));
-                $this->m_room->add($data);
-            }
+            $data = array(
+                'numbers' => $namakmr.'-'.$jumlah,
+                'idclass' => $this->input->post('idclass'),
+                'namespace' => $this->input->post('namespace'));
+            $this->m_room->add($data);
             $this->session->set_flashdata('success', 'Kamar Terupdated');
             redirect('admin/rooms');
         }
