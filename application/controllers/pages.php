@@ -8,7 +8,7 @@
 /**
  * Description of pages
  *
- * @author Syiewa
+ * @author 
  */
 Class Pages extends Frontend_Controller {
 

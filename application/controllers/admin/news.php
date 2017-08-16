@@ -64,20 +64,20 @@ class News extends Admin_Controller {
         $this->load->view('admin/modal', $this->data);
     }
 
-    public function edit($id) {
+    public function edit($initial_id) {
         if ($this->input->post('update')) {
             $data = $this->m_news->array_from_post(array('title', 'post_entry'));
-            $this->m_news->update($data, $id);
+            $this->m_news->update($data, $initial_id);
             $this->session->set_flashdata('success', 'Berita/Artikel updated');
             redirect('admin/news/index');
         }
-        $this->data['news'] = $this->m_news->get($id);
+        $this->data['news'] = $this->m_news->get($initial_id);
         $this->data['content'] = 'admin/berita/edit';
         $this->load->view('admin/modal', $this->data);
     }
 
-    public function delete($id) {
-        if ($this->m_news->delete($id)) {
+    public function delete($initial_id) {
+        if ($this->m_news->delete($initial_id)) {
             $this->session->set_flashdata('success', 'News deleted');
             redirect('admin/news');
         }

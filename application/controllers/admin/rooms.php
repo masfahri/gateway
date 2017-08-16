@@ -8,7 +8,7 @@
 /**
  * Description of rooms
  *
- * @author Syiewa
+ * @author 
  */
 class Rooms extends Admin_Controller {
 

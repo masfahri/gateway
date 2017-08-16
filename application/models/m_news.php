@@ -17,14 +17,13 @@ class M_news extends MY_Model {
         parent::__construct();
     }
 
-    public function get_all($limit = 3, $initial_id="") {
+    public function get_all($initial_id="") {
         $this->db->select('*');
         $this->db->from('post_article');
         if( $initial_id != "" ){
             $this->db->where('post_id', $initial_id);
         }
         $this->db->order_by('create_date','desc');
-        $this->db->limit($limit);
         $query = $this->db->get();
         if($query->num_rows() > 0){
           return $query->result_array();  
