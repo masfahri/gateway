@@ -1,35 +1,29 @@
 <?php
-
 /*
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-
 /**
  * Description of kelas
  *
  * @author Syiewa
  */
 class News extends Admin_Controller {
-
     //put your code here
     var $template = 'admin/template';
     var $gallerypath;
     var $gallery_path_url;
-
     public function __construct() {
         parent::__construct();
         $this->load->model('m_news');
         $this->gallerypath = realpath(APPPATH . '../assets/img');
         $this->gallery_path_url = base_url() . 'assets/img/';
     }
-
     public function index() {
         $this->data['news'] = $this->m_news->get_all();
         $this->data['content'] = 'admin/berita/index';
         $this->load->view($this->template, $this->data);
     }
-
     public function add() {
         if ($this->input->post('submit')) {
             $data = $this->m_news->array_from_post(array('title', 'post_entry'));
@@ -63,7 +57,6 @@ class News extends Admin_Controller {
         $this->data['content'] = 'admin/berita/add';
         $this->load->view('admin/modal', $this->data);
     }
-
     public function edit($initial_id) {
         if ($this->input->post('update')) {
             $data = $this->m_news->array_from_post(array('title', 'post_entry'));
@@ -75,14 +68,11 @@ class News extends Admin_Controller {
         $this->data['content'] = 'admin/berita/edit';
         $this->load->view('admin/modal', $this->data);
     }
-
-    public function delete($initial_id) {
-        if ($this->m_news->delete($initial_id)) {
+    public function delete($id) {
+        if ($this->m_news->delete($id)) {
             $this->session->set_flashdata('success', 'News deleted');
             redirect('admin/news');
         }
     }
-
 }
-
 ?>
