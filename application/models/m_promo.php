@@ -18,6 +18,19 @@ class M_promo extends MY_Model {
         parent::set_tabel('promote', 'idpromo');
     }
 
+    public function get_all($initial_id="") {
+        $this->db->select('*');
+        $this->db->from('promote');
+        if( $initial_id != "" ){
+            $this->db->where('idpromo', $initial_id);
+        }
+        //$this->db->order_by('create_date','desc');
+        $query = $this->db->get();
+        if($query->num_rows() > 0){
+          return $query->result_array();  
+        }else return null;
+    }
+
     public function get_promokelas() {
         $this->db->select('promote.idpromo, class.title as "nmclass", class.price, promote.discount, promote.start_date, promote.end_date, promote.description as "desc", promote.title as "prom", foto_produk.thumb');
         $this->db->join('class', 'promote.idclass = class.idclass','left');
