@@ -40,9 +40,41 @@
             <label for="inputName" class="col-lg-2 control-label">Nama Makanan</label>
             <div class="col-lg-3">
                 <?php
-                $attr = attrName(array('form-control', 'input_jumlah', 'nama_makanan', 'length', '3-100', 'Nama Makanan harus berisi 3-100 karakter'));
-                echo form_input($attr, set_value('nama_makanan'));;
+                $attr = attrName(array('form-control', 'nama_makanan', 'nama_makanan', 'length', '3-100', 'Nama Makanan harus berisi 3-100 karakter'));
+                echo form_input($attr, set_value('nama_makanan'));
                 ?>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="inputName" class="col-lg-2 control-label">Harga</label>
+            <div class="col-lg-3">
+                <?php
+                $attr = attr(array('form-control', 'input_price', 'price', 'length', '3-100', 'Harga harus berisi 3-12 karakter'));
+                ?>
+                <?php echo form_input($attr); ?>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="inputName" class="col-lg-2 control-label">Deskripsi</label>
+            <div class="col-lg-8">
+                <?php
+                $attr = attrName(array('form-control', 'deskripsi_makanan', 'deskripsi_makanan', 'length', '3-100', 'Deskripsi Makanan harus berisi 10-100 karakter'));
+                echo form_textarea($attr, set_value('deskripsi_makanan'));
+                ?>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="inputName1" class="col-lg-2 control-label">Foto Makanan</label>
+            <div class="col-lg-2">
+                <?php
+                $data = array(
+                    'name' => 'foto_makanan',
+                    'data-validation' => "required mime size",
+                    'data-validation-allowing' => "jpg, png, gif",
+                    'data-validation-max-size' => "2M"
+                );
+                ?>
+                <?php echo form_upload($data); ?>
             </div>
         </div>
         <div class="form-group">
@@ -66,7 +98,7 @@
             <thead>
                 <tr class="">
                     <th>Id Kantin</th>
-                    <th>Nama Makanan</th>    
+                    <th>Nama Makanan</th>
                     <th>Deskripsi Makanan</th>
                     <th>Harga</th>
                     <th>Foto Makanan</th>
@@ -94,7 +126,7 @@
                         </tr>
                     <?php endforeach; ?>
                 <?php else: ?>
-                    <tr><td>Belum ada data !</td></tr> 
+                    <tr><td>Belum ada data !</td></tr>
                 <?php endif; ?>
             </tbody>
         </table>

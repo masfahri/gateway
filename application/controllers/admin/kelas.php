@@ -57,7 +57,7 @@ class Kelas extends Admin_Controller {
         if ($this->input->post('submit')) {
             $fasil = array('lcd', 'wifi', 'breakfast', 'safe', 'bath', 'dinner', 'parking', 'laundry');
             $fas_title = array('LCD', 'WiFi', 'Sarapan', 'Pelayanan Hotel Plus', 'Kamar Mandi', 'Makan Malam', 'Parkir', 'Laundry');
-            $data = $this->m_kelas->array_from_post(array('title', 'price', 'description'));
+            $data = $this->m_kelas->array_from_post(array('title', 'price', 'description','photoclass'));
             $this->m_kelas->save($data);
             $id = $this->db->insert_id();
             for ($i = 0; $i < sizeof($fasil); $i++) {
