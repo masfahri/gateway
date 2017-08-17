@@ -76,8 +76,8 @@ class News extends Admin_Controller {
         $this->load->view('admin/modal', $this->data);
     }
 
-    public function delete($initial_id) {
-        if ($this->m_news->delete($initial_id)) {
+    public function delete($id) {
+        if ($this->m_news->delete($id)) {
             $this->session->set_flashdata('success', 'News deleted');
             redirect('admin/news');
         }

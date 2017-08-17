@@ -1,6 +1,6 @@
 <div class="col-md-12">
 
-<?php if ($this->uri->segment(1) == 'news'):?>
+<?php if ($this->uri->segment(1) == 'promo'):?>
     <?php if (count($news) > 0): ?>  
         <?php foreach ($news as $n): ?>
             <h1><?php echo ucfirst($n['title']); ?></h1>
