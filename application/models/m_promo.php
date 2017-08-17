@@ -16,43 +16,6 @@ class M_promo extends MY_Model {
     public function __construct() {
         parent::__construct();
         parent::set_tabel('promote', 'idpromo');
-        parent::set_tabel('class', 'idclass');
-        parent::set_tabel('rooms', 'idrooms');
-    }
-
-    public function getAllKelasRooms($value='')
-    {
-      $this->db->select('*')
-               ->from('class');
-      $query = $this->db->get();
-      if($query->num_rows() > 0){
-        return $query->result_array();
-      }else return null;
-    }
-
-    public function getRoomById($value='')
-    {
-      $this->db->select('*')
-               ->from('rooms');
-      if( $value != "" ){
-        $this->db->where('idclass', $value);
-      }
-      $query = $this->db->get();
-      if($query->num_rows() > 0){
-        return $query->result_array();
-      }else return null;
-    }
-    public function get_all($initial_id="") {
-        $this->db->select('*');
-        $this->db->from('promote');
-        if( $initial_id != "" ){
-            $this->db->where('idpromo', $initial_id);
-        }
-        //$this->db->order_by('create_date','desc');
-        $query = $this->db->get();
-        if($query->num_rows() > 0){
-          return $query->result_array();
-        }else return null;
     }
 
     public function get_promokelas() {

@@ -8,7 +8,7 @@
 /**
  * Description of pages
  *
- * @author
+ * @author 
  */
 Class Pages extends Frontend_Controller {
 
@@ -65,11 +65,11 @@ Class Pages extends Frontend_Controller {
     }
 
     private function _page() {
-
+        
     }
 
     private function _galery() {
-
+        
     }
 
     private function _service() {
@@ -78,11 +78,6 @@ Class Pages extends Frontend_Controller {
             $fas = $this->m_kelas->get_aktiffac($this->data['kelas'][$k]->idclass);
             $this->data['kelas'][$k]->fasilitas = $fas;
         }
-    }
-
-    public function _promo()
-    {
-      $this->data['all'] = $this->m_promo->get_all();
     }
 
 

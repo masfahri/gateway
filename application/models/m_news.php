@@ -15,8 +15,6 @@ class M_news extends MY_Model {
     //put your code here
     public function __construct() {
         parent::__construct();
-        parent::set_tabel('post_article', 'post_id');
-
     }
 
     public function get_all($initial_id="") {
