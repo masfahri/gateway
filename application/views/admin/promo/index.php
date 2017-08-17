@@ -1,7 +1,7 @@
 <div class="page-header">
     <h1>Data Promo Hotel</h1>
 </div>
-<a href="<?php echo base_url('/admin/promo/add'); ?>" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#telor">
+<a href="<?php echo base_url('admin/promo/add'); ?>" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#telor">
     Tambah Data
 </a>
 <br /><br />

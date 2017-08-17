@@ -8,72 +8,84 @@
 /**
  * Description of pages
  *
- * @author Syiewa
+ * @author
  */
-Class Pages extends Admin_Controller {
+Class Pages extends Frontend_Controller {
 
-    var $template = 'admin/template';
+    var $template = 'web/template';
 
     public function __construct() {
         parent::__construct();
         $this->load->model('m_page');
+        $this->load->model('m_promo');
+        $this->load->model('m_news');
+        $this->load->model('m_restaurant');
     }
 
     public function index() {
-        $this->data['pages'] = $this->m_page->get_with_parent();
-        $this->data['content'] = 'admin/pages/index';
-        $this->load->view($this->template, $this->data);
-    }
-
-    public function add() {
-        if ($this->input->post('submit')) {
-            $data = $this->m_page->array_from_post(array('title', 'parent', 'body', 'template', 'slug'));
-            $data['created'] = date('Y-m-d H:i:s');
-            $data['slug'] = strtolower($data['slug']);
-            if ($this->m_page->insert($data)) {
-                $this->session->set_flashdata('message', 'Halaman Baru berhasil ditambahkan');
-                redirect('admin/pages');
+        $this->data['page'] = $this->m_page->get_by(array('slug' => (string) $this->uri->segment(1)), TRUE);
+        if (!empty($this->data['page'])) {
+            add_meta_title($this->data['page']->title);
+            $method = '_' . $this->data['page']->template;
+            if (method_exists($this, $method)) {
+                $this->$method();
+            } else {
+                log_message('error', 'Tidak dpt meload template ' . $method . ' di file ' . __FILE__ . ' baris ' . __LINE__);
+                show_error('Tidak dapat meload template ' . $method);
             }
+//
+//        // Load the view
+            $this->data['content'] = 'templates/' . $this->data['page']->template;
+            $this->load->view($this->template, $this->data);
+        } else {
+            $this->data['content'] = 'templates/404';
+            $this->load->view($this->template, $this->data);
         }
-        $this->data['pages_no_parents'] = $this->m_page->get_no_parents();
-        $this->data['content'] = 'admin/pages/add';
-        $this->load->view('admin/modal', $this->data);
     }
 
-    public function edit($id = NULL) {
-        $this->data['page'] = $this->m_page->get($id);
-        if ($this->input->post('submit')) {
-            $data = $this->m_page->array_from_post(array('title', 'parent', 'body','template','slug'));
-            $data['created'] = date('Y-m-d H:i:s');
-            $data['slug'] = strtolower($data['slug']);
-            if ($this->m_page->update($data, $id)) {
-                $this->session->set_flashdata('message', 'Halaman Baru berhasil ditambahkan');
-                redirect('admin/pages');
-            }
+    private function _homepage() {
+        $this->load->model('m_slide');
+        $this->data['promo'] = $this->m_promo->get_promokelas();
+        $this->data['news'] = $this->m_news->get_all();
+        $this->data['slides'] = $this->m_slide->get_all();
+    }
+
+    private function _news() {
+        $initial_id = $this->uri->segment(2);
+        $this->load->model('m_news');
+        $this->data['news']  =  $this->m_news->get_one($this->uri->segment(2));
+        $this->data['all'] = $this->m_news->get_all();
+    }
+
+    private function _restaurant() {
+        $this->load->model('m_restaurant');
+        $this->data['kat_kantin'] = $this->m_restaurant->kat_kantin();
+        $this->data['kantin']  =  $this->m_restaurant->get_one_kantin();
+        $this->data['all'] = $this->m_restaurant->get_all_kantin();
+    }
+
+    private function _page() {
+
+    }
+
+    private function _galery() {
+
+    }
+
+    private function _service() {
+        $this->data['kelas'] = $this->m_kelas->get_gambardefault();
+        foreach ($this->data['kelas'] as $k => $v) {
+            $fas = $this->m_kelas->get_aktiffac($this->data['kelas'][$k]->idclass);
+            $this->data['kelas'][$k]->fasilitas = $fas;
         }
-        $this->data['pages_no_parents'] = $this->m_page->get_no_parents();
-        $this->data['content'] = 'admin/pages/edit';
-        $this->load->view('admin/modal', $this->data);
     }
 
-    function order_ajax() {
-        // Save order from ajax call
-        if (isset($_POST['sortable'])) {
-            $this->m_page->save_order($_POST['sortable']);
-        }
-
-        // Fetch all pages
-        $this->data['pages'] = $this->m_page->get_nested();
-        $this->data['status'] = $this->m_page->status;
-
-        // Load view
-        $this->load->view('admin/pages/order_ajax', $this->data);
+    public function _promo()
+    {
+      $this->data['all'] = $this->m_promo->get_all();
     }
 
-    public function delete($id) {
-        $this->m_page->delete($id);
-        redirect('admin/pages');
-    }
+
 
 }
 

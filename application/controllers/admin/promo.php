@@ -67,7 +67,7 @@ class Promo extends Admin_Controller {
                 $this->session->set_flashdata('success', 'Promo created');
                 redirect('admin/promo/index');
         }
-        $this->data['promo'] = $this->m_promo->get_promokelas();
+        //$this->data['promo'] = $this->m_promo->get_promokelas();
         $this->data['getAll'] = $this->m_promo->getAllKelasRooms();
         $this->data['get'] = $this->m_kelas->get_array();
         $this->data['content'] = 'admin/promo/add';

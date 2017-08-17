@@ -1,7 +1,7 @@
 <div class="page-header">
     <h1>Data Class Room Hotel</h1>
 </div>
-<a href="<?php echo base_url('index.php/admin/kelas/add'); ?>" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#telo">
+<a href="<?php echo base_url('admin/kelas/add'); ?>" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#telo">
     Tambah Data
 </a>
 <br /><br />
@@ -9,7 +9,7 @@
     <thead>
         <tr class="success">
             <th>Nama</th>
-            <th>Harga</th>    
+            <th>Harga</th>
             <th>LCD</th>
             <th>WIFI</th>
             <th>Breakfast</th>
@@ -40,8 +40,8 @@
                         <?php endfor; ?>
                     <?php endif; ?>
                     <td>
-                        <a href="<?php echo base_url('index.php/admin/kelas/edit/' . $p->idclass); ?>" class="btn btn-default btn-xs btn-primary" data-target="#telo" role="button" data-toggle="modal"><span class="glyphicon glyphicon-edit"></span> Edit</a>
-                        <a href="<?php echo base_url('index.php/admin/kelas/gambar/' . $p->idclass); ?>" class="btn btn-default btn-xs btn-primary" ><span class="glyphicon glyphicon-edit"></span> Galery</a>
+                        <a href="<?php echo base_url('admin/kelas/edit/' . $p->idclass); ?>" class="btn btn-default btn-xs btn-primary" data-target="#telo" role="button" data-toggle="modal"><span class="glyphicon glyphicon-edit"></span> Edit</a>
+                        <a href="<?php echo base_url('admin/kelas/gambar/' . $p->idclass); ?>" class="btn btn-default btn-xs btn-primary" ><span class="glyphicon glyphicon-edit"></span> Galery</a>
                             <?php echo btn_delete('admin/kelas/delete/' . $p->idclass); ?>
                     </td>
                 </tr>
@@ -50,7 +50,7 @@
             endforeach;
             ?>
         <?php else: ?>
-            <tr><td>Belum ada data !</td></tr> 
+            <tr><td>Belum ada data !</td></tr>
         <?php endif; ?>
     </tbody>
 </table>

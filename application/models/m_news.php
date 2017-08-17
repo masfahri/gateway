@@ -28,7 +28,7 @@ class M_news extends MY_Model {
         $this->db->order_by('create_date','desc');
         $query = $this->db->get();
         if($query->num_rows() > 0){
-          return $query->result_array();  
+          return $query->result_array();
         }else return null;
     }
 
