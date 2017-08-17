@@ -1,13 +1,16 @@
 <script type="text/javascript">
-    function changeFunc() {
-        var selectBox = document.getElementById("selectBox").selectedIndex;
-        var selectedValue = selectBox.options[selectBox.selectedIndex].value;
-        
-        if (selectBox.options[selectBox.selectedIndex].value == "<?php echo $get->idclass ?>") {
-        selectBox.attr("selected", 'selected');
+    $(document).ready(function() {
+      $('#kelas').change(function() {
+        if($(this).val() != 0) {
+          var url = "<?php echo site_url('admin/promo/addAjaxKelas'); ?>/"+$(this).val();
+          $.get(url, function(data, status){
+              $('#rooms').html(data);
+          });
         }
-        alert(document.getElementsByTagName("option")[selectBox].value);
-    }
+        return false;
+      })
+
+    })
 </script>
 <?php
 $attributes = array('class' => 'form-horizontal', 'id' => 'myForm', 'role' => 'form');
@@ -28,13 +31,14 @@ echo form_open_multipart('admin/promo/add', $attributes);
     <div class="form-group">
         <label for="inputJab" class="col-lg-2 control-label">Pilih Kategori</label>
         <div class="col-lg-7">
-            <select name="idclass" class="form-control"  id ="selectBox" onChange="changeFunc()">
-                <option value="">- please select -</option>
-                <?php foreach ($get as $kategori) : ?>
-                    <option value="<?php echo $kategori['idclass']; ?>" <?php if ($kategori['idclass'] == $get[1]['idclass']) {echo "selected";}  ?>><?php echo $kategori['title']; ?></option>
-                    <?php
-                endforeach;
-                ?>
+            <select class="kelas" name="kelas" id="kelas">
+              <option value="0">Pilih Kelas</option>
+              <?php foreach ($getAll as $get) {?>
+                <option value="<?php echo $get['idclass'] ?>"><?php echo $get['title'] ?></option>
+              <?php } ?>
+            </select>
+            <select class="rooms" name="rooms" id="rooms">
+              <option value="">Pilih Kelas</option>
             </select>
         </div>
     </div>
@@ -75,7 +79,7 @@ echo form_open_multipart('admin/promo/add', $attributes);
             <thead>
                 <tr class="">
                     <th>Id Kantin</th>
-                    <th>Nama Makanan</th>    
+                    <th>Nama Makanan</th>
                     <th>Deskripsi Makanan</th>
                     <th>Harga</th>
                     <th>Foto Makanan</th>
@@ -103,7 +107,7 @@ echo form_open_multipart('admin/promo/add', $attributes);
                         </tr>
                     <?php endforeach; ?>
                 <?php else: ?>
-                    <tr><td>Belum ada data !</td></tr> 
+                    <tr><td>Belum ada data !</td></tr>
                 <?php endif; ?>
             </tbody>
         </table>

@@ -2,7 +2,7 @@
     <h2>Data Halaman Web</h2>
     <p class="alert alert-info">Drag untuk memilih posisi halaman web & tekan "SAVE"</p>
 </div>
-<a href="<?php echo base_url('index.php/admin/pages/add'); ?>" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#telo">+ Add a New Page</a>
+<a href="<?php echo base_url('admin/pages/add'); ?>" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#telo">+ Add a New Page</a>
 <br><br>
 <div id="orderResult"></div>
 <input type="button" id="save" value="Save" class="btn btn-primary" />

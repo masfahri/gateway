@@ -9,7 +9,7 @@
     <thead>
         <tr class="success">
             <th>Nama Promo</th>
-            <th>Type Kelas</th>    
+            <th>Type Kelas</th>
             <th>Dari Tanggal</th>
             <th>Sampe Tanggal</th>
             <th>Diskon</th>
@@ -19,20 +19,24 @@
     </thead>
     <tbody>
         <?php if ($promo): ?>
+          <?php foreach ($promo as $key => $promo): ?>
+
                 <tr>
-                    <td><?php echo $promo->title; ?></td>
-                    <td><?php echo $class[$promo->idclass]; ?></td>
-                    <td><?php echo $promo->start_date; ?></td>
-                    <td><?php echo $promo->end_date; ?></td>
-                    <td><?php echo $promo->discount; ?></td>
-                    <td><?php echo _toaktif('admin/promo/aktif/', $promo->idpromo, $promo->status); ?></td>
+                    <td><?php echo $promo['title']; ?></td>
+                    <td><?php echo $promo['idclass']; ?></td>
+                    <td><?php echo $promo['start_date']; ?></td>
+                    <td><?php echo $promo['end_date']; ?></td>
+                    <td><?php echo $promo['discount']; ?></td>
+                    <td><?php echo _toaktif('admin/promo/aktif/', $promo['idpromo'], $promo['status']); ?></td>
                     <td>
-                        <a href="<?php echo base_url('index.php/admin/promo/edit/' . $promo->idclass); ?>" class="btn btn-default btn-xs btn-primary" data-target="#telo" role="button" data-toggle="modal"><span class="glyphicon glyphicon-edit"></span> Edit</a> <?php echo btn_delete('admin/promo/delete/' . $promo->idpromo); ?>
+                        <a href="<?php echo base_url('admin/promo/edit/' . $promo['idclass']); ?>" class="btn btn-default btn-xs btn-primary" data-target="#telo" role="button" data-toggle="modal"><span class="glyphicon glyphicon-edit"></span> Edit</a> <?php echo btn_delete('admin/promo/delete/' . $promo['idpromo']); ?>
                     </td>
                     <td></td>
                 </tr>
+              <?php endforeach; ?>
+
         <?php else: ?>
-            <tr><td>Belum ada data !</td></tr> 
+            <tr><td>Belum ada data !</td></tr>
         <?php endif; ?>
     </tbody>
 </table>
