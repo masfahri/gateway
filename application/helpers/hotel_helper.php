@@ -160,4 +160,22 @@ function limit_to_numwords($string, $numwords) {
     return $excerpt;
 }
 
+function showHide() {
+    return 
+        "<script type='text/javascript'>
+            $(function() {
+                $('#rooms-content').hide();
+                $('#rooms').change(function(){
+                    if($('#rooms').val() != 0) {
+                        $('#rooms-content').show();
+                        $('#length').val('');
+                    } else {
+                        $('#rooms-content').hide();
+                        $('#length').val('');
+                    } 
+                });
+            });
+        </script>";
+}
+
 ?>

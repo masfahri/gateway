@@ -36,7 +36,7 @@
                 <?php
                 $attr = attr(array('form-control', 'input_jumlah', 'jumlah', 'number', '1-100', 'jumlah harus berisi angka'));
                 ?>
-                <?php echo form_input($attr, set_value('jumlah', $jumlah)); ?>
+                <?php echo form_input($attr, set_value('jumlah', $jumlah+1)); ?>
             </div>
         </div>
         <div class="form-group">

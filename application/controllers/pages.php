@@ -8,7 +8,7 @@
 /**
  * Description of pages
  *
- * @author 
+ * @author
  */
 Class Pages extends Frontend_Controller {
 
@@ -65,11 +65,11 @@ Class Pages extends Frontend_Controller {
     }
 
     private function _page() {
-        
+
     }
 
     private function _galery() {
-        
+
     }
 
     private function _service() {

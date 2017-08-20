@@ -23,7 +23,7 @@ class Promo extends Admin_Controller {
         parent::__construct();
         $this->load->model('m_promo');
         $this->load->model('m_kelas');
-        $this->load->model('m_promo');
+        $this->load->model('m_room');
 
     }
 
@@ -38,6 +38,7 @@ class Promo extends Admin_Controller {
 
     public function addAjaxKelas($idKelas)
     {
+      $this->data['getKelas'] = $this->m_room->getRoomByKelasId($idKelas);
       $kelas = $this->m_promo->getRoomById($idKelas);
       $data = "<option value=''>- Pilih Kelas -</option>";
       foreach ($kelas as $kelas) {
@@ -53,25 +54,26 @@ class Promo extends Admin_Controller {
     }
 
      public function add() {
-        if ($this->input->post('submit')) {
-            $data = $this->m_promo->array_from_post(array('title', 'promote'));
-            $config = array(
-                'allowed_types' => 'jpg|jpeg|gif|png',
-                'upload_path' => $this->gallerypath,
-                'max_size' => 2000,
-                'file_name' => strtolower($data['title'])
-            );
-                $data['start_date'] = date('Y-m-d', now());
-                $data['end_date'] = 'admin';
-                $this->m_promo->insert($data);
-                $this->session->set_flashdata('success', 'Promo created');
-                redirect('admin/promo/index');
-        }
-        //$this->data['promo'] = $this->m_promo->get_promokelas();
+        $this->load->model('m_promo');
         $this->data['getAll'] = $this->m_promo->getAllKelasRooms();
         $this->data['get'] = $this->m_kelas->get_array();
         $this->data['content'] = 'admin/promo/add';
         $this->load->view('admin/modal', $this->data);
+        if ($this->input->post('submit')) {
+            $data = array(
+                    'idclass'     => $this->input->post('idclass'),
+                    'idrooms'     => $this->input->post('idrooms'),
+                    'title'       => $this->input->post('title'),
+                    'start_date'  => $this->input->post('start_date'),
+                    'end_date'    => $this->input->post('end_date'),
+                    'discount'    => $this->input->post('discount'),
+                    'description' => $this->input->post('description'),
+                    'status'      => '1');
+        $this->m_promo->add($data);
+        $this->session->set_flashdata('success', 'Promo Sudah Di Tambahkan');
+        redirect('admin/promo');
+        }
+        //$this->data['promo'] = $this->m_promo->get_promokelas();
     }
 
     public function edit($id = 1) {

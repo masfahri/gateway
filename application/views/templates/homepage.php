@@ -18,16 +18,16 @@
                     <div class="offer offer-success">
                         <div class="shape">
                             <div class="shape-text">
-                                Disc <?php echo $p->discount; ?> %								
+                                Disc <?php echo $p['discount']; ?> %								
                             </div>
                         </div>
                         <div class="offer-content">
                             <h5 class="lead">
-                                <?php echo $p->prom . ' ' . $p->nmclass; ?><br>
-                                <small><?php echo date('d M Y', strtotime($p->start_date)) . ' s/d ' . date('d M Y', strtotime($p->end_date)); ?></small>
+                                <?php echo $p['nmprom'] ; ?><br>
+                                <small><?php echo date('d M Y', strtotime($p['start_date'])) . ' s/d ' . date('d M Y', strtotime($p['end_date'])); ?></small>
                             </h5>
                             <p>
-                                <?php echo limit_to_numwords(strip_tags($p->desc), 50); ?>
+                                <?php echo limit_to_numwords(strip_tags($p['description']), 50); ?>
                             </p>
                         </div>
                     </div>

@@ -18,6 +18,15 @@ class M_room extends MY_Model {
         parent::set_tabel('rooms', 'idrooms');
     }
 
+    public function getRoomByKelasId($initial_id) {
+        $this->db->select('*');
+        $this->db->from('rooms');
+        $qr = $this->db->get();
+        if($qr->num_rows() > 0){
+            return $qr->result_array();
+        }else return null;
+    }
+
     public function get_allroom() {
         $data = $this->db->query(
                 'SELECT r.* , c.price , c.`title` , 
