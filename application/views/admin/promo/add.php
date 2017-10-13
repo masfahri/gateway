@@ -29,8 +29,8 @@ echo form_open_multipart('admin/promo/add', $attributes);
                 echo form_open_multipart('admin/restaurant', $attributes);
                 ?>
             </div>
-                <label for="inputJab" class="col-lg-2 control-label">Pilih Kategori</label>
-                <div class="col-lg-6">
+                <label for="inputJab" class="col-md-2 control-label">Pilih Kategori</label>
+                <div class="col-md-6">
                     <select class="kelas form-control" name="idclass" id="kelas">
                       <option value="0">Pilih Kelas</option>
                       <?php foreach ($getAll as $get) {?>
@@ -38,17 +38,17 @@ echo form_open_multipart('admin/promo/add', $attributes);
                       <?php } ?>
                     </select>
                 </div>
-                <div class="col-lg-6">
+                <div class="col-md-6">
                     <select class="rooms form-control" name="idrooms" id="rooms">
                       <option value="0">Pilih Kelas</option>
                     </select>
                 </div>
                 <div id="rooms-content">
-                    <div class="col-lg-6">
+                    <div class="col-md-6">
                         <div class="row"> 
                             <div class="form-group">
-                                <label for="inputJab" class="col-lg-2 control-label">Nama Diskon</label>
-                                <div class="col-lg-7">
+                                <label for="inputJab" class="col-md-2 control-label">Nama Diskon</label>
+                                <div class="col-md-7">
                                     <?php
                                     $attr = attr(array('form-control', 'input_title', 'title', 'length', '10-100', 'Title harus berisi 10-100 karakter'));
                                     ?>
@@ -58,21 +58,22 @@ echo form_open_multipart('admin/promo/add', $attributes);
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Mulai Diskon</label>
                                 <input type="text" class="form-control datepicker input-sm" id="input_startdate" data-validation="date" data-validation-format="yyyy/mm/dd" id="from" placeholder="Enter date" name="start_date">
+                                <input type="text" class="form-control datepicker input-sm" id="input_startdate" data-validation="date" data-validation-format="yyyy/mm/dd" id="from" placeholder="Enter date" name="start_date">
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Akhir Diskon</label>
                                 <input type="text" class="form-control datepicker input-sm" id="input_enddate" data-validation="date" data-validation-format="yyyy/mm/dd" id="to" placeholder="Enter date" name="end_date">
                             </div>  
                             <div class="form-group">
-                                <label for="inputJab" class="col-lg-2 control-label">Diskon</label>
+                                <label for="inputJab" class="col-md-2 control-label">Diskon</label>
                                 <?php
                                     $attr = attr(array('form-control', 'input_discount', 'discount', 'number', '1-100', 'Diskon harus berisi angka'));
                                 ?>
                                 <?php echo form_input($attr, set_value('discount', '')); ?>
                             </div>                     
                             <div class="form-group">
-                                <label for="inputName" class="col-lg-2 control-label">Keterangan Diskon</label>
-                                <div class="col-lg-8">
+                                <label for="inputName" class="col-md-2 control-label">Keterangan Diskon</label>
+                                <div class="col-md-8">
                                     <?php
                                     $attr = attr(array('form-control', 'input_description', 'description', 'length', '3-1000', 'Harga harus berisi 3-1000 karakter'));
                                     ?>

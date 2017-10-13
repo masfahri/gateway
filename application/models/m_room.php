@@ -18,6 +18,24 @@ class M_room extends MY_Model {
         parent::set_tabel('rooms', 'idrooms');
     }
 
+    public function get_one_class($initial_id="") {
+        $this->db->select('*');
+        $this->db->from('class');
+        $this->db->where('idclass', $initial_id);
+        $query = $this->db->get();
+        if ($query->num_rows() > 0) {
+            return $query->result_array();
+        }else return null;
+    }    
+
+    public function del_room($id) {
+        $q = $this->db->query('Delete from rooms where idrooms = ' . $id);
+        if ($this->db->affected_rows() > 0) {
+            return TRUE;
+        }
+        return FALSE;
+    }
+
     public function getRoomByKelasId($initial_id) {
         $this->db->select('*');
         $this->db->from('rooms');

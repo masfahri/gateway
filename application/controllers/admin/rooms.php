@@ -23,6 +23,7 @@ class Rooms extends Admin_Controller {
 
     public function index() {
         $this->data['kelas'] = $this->m_kelas->get_all();
+        $this->data['one'] = $this->m_room->get_one_class();
         
         if (isset($_GET['id'])) {
             $this->data['kelasget'] = $this->m_kelas->get($_GET['id']);
@@ -61,6 +62,20 @@ class Rooms extends Admin_Controller {
         $id OR redirect(site_url('admin/rooms'));
         $this->m_room->update(array('status' => $aktif, 'guest_id' => 0), $id);
         redirect(site_url('admin/rooms?id=' . $idclass));
+    }
+
+   public function delete($id) {
+        if ($this->m_room->delete($id)) {
+            $this->m_room->del_room($id);
+            $this->session->set_flashdata('success', 'Room deleted');
+            redirect('admin/rooms');
+        }
+    }
+
+    public function edit($id)
+    {
+        $this->data['content'] = 'admin/rooms/edit';
+        $this->load->view('admin/modal', $this->data);
     }
 
 }
