@@ -16,8 +16,14 @@ class M_promo extends MY_Model {
     public function __construct() {
         parent::__construct();
         parent::set_tabel('promote', 'idpromo');
-        parent::set_tabel('class', 'idclass');
-        parent::set_tabel('rooms', 'idrooms');
+
+    }
+    public function del_promo($id) {
+        $q = $this->db->query('Delete from promote where idpromo = ' . $id);
+        if ($this->db->affected_rows() > 0) {
+            return TRUE;
+        }
+        return FALSE;
     }
 
     public function getAllKelasRooms($value='')
@@ -41,6 +47,16 @@ class M_promo extends MY_Model {
       if($query->num_rows() > 0){
         return $query->result_array();
       }else return null;
+    }
+    public function get_promo($initial_id="")
+    {
+      $this->db->select('*');
+      $this->db->from('promote');
+      $this->db->where('idpromo', $initial_id);
+        $query = $this->db->get();
+        if($query->num_rows() > 0){
+          return $query->row_array();
+        }else return null;
     }
     public function get_all($initial_id="") {
         $this->db->select('*');

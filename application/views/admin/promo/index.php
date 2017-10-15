@@ -29,7 +29,7 @@
                     <td><?php echo $promo['discount']; ?></td>
                     <td><?php echo _toaktif('admin/promo/aktif/', $promo['idpromo'], $promo['status']); ?></td>
                     <td>
-                        <a href="<?php echo base_url('admin/promo/edit/' . $promo['idclass']); ?>" class="btn btn-default btn-xs btn-primary" data-target="#telo" role="button" data-toggle="modal"><span class="glyphicon glyphicon-edit"></span> Edit</a> <?php echo btn_delete('admin/promo/delete/' . $promo['idpromo']); ?>
+                        <a href="<?php echo base_url('admin/promo/edit/' . $promo['idpromo']); ?>" class="btn btn-default btn-xs btn-primary" data-target="#telor" role="button" data-toggle="modal"><span class="glyphicon glyphicon-edit"></span> Edit</a> <?php echo btn_delete('admin/promo/delete/' . $promo['idpromo']); ?>
                     </td>
                     <td></td>
                 </tr>
