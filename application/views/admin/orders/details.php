@@ -76,6 +76,12 @@
         }
         ?>
     </div>
+    <center>
+         <a class="btn btn-info btn-md pull-center" href="<?php echo base_url('/admin/order/'); ?>"><i class="glyphicon glyphicon-circle-arrow-left"></i>&nbsp &nbsp Back</a>
+    </center>
+   
+    
+
     <?php
     if ($order->order_status != 3)
         echo form_submit('cancel', 'Cancel Order', 'class="btn btn-danger btn-sm pull-right"');

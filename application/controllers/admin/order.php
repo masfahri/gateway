@@ -53,11 +53,18 @@ class Order extends Admin_Controller {
         }
         $this->data['status'] = $this->m_order->status;
         $this->data['orders'] = $this->m_order->get_recents($offset, $perpage);
+        $tanggal = date('Y-m-d');
+
+        // if($this->data['orders']['order_status'] == '1' && $this->data['orders']['check_out'] == $tanggal){
+        //     $this->data['orders']['order_status'] = '2';
+        // }
+
         $this->data['content'] = 'admin/orders/index';
         if ($this->input->post('ajax', FALSE)) {
             $data = array(
                 'result' => $this->data["orders"],
                 'status' => $this->data['status'],
+                'tanggal' => $tanggal,
                 'pagination' => $this->pagination->create_links()
             );
             echo json_encode($data);

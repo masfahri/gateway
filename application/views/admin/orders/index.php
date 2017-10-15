@@ -94,8 +94,12 @@
                     success: function(returnedData) {
                         //returnedData will now be an array Object
                         var data = returnedData['result'];
+                        var tgl = returnedData['tanggal'];
                         var html = '';
                         for (var i = 0, len = data.length; i < len; ++i) {
+                            if(data[i].order_status == '1' && data[i].check_out <= tgl){
+                                data[i].order_status = '2';
+                            }
                             html += '<tr>';
                             html += '<td>' + data[i].order_id + '</td>';
                             html += '<td>' + data[i].first_name + ' ' + data[i].last_name + '</td>';
@@ -106,7 +110,7 @@
                             html += '<a href="' + base_url + '/delete/' + data[i].order_id + '" class="btn btn-default btn-xs btn-danger" >Delete</a></td>'
                             html += "</tr>";
                         }
-                        console.log(html);
+                        console.log(data);
                         $('#data').html(html);
                         $('#paging').html(returnedData['pagination']);
 //                        $('#order_id').html(returnedData['result'][0].order_id);
