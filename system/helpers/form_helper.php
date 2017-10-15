@@ -180,6 +180,16 @@ if ( ! function_exists('form_input'))
 	}
 }
 
+if ( ! function_exists('form_number'))
+{
+	function form_number($data = '', $value = '', $extra = '')
+	{
+		$defaults = array('type' => 'number', 'class' => 'form-control','name' => (( ! is_array($data)) ? $data : ''), 'value' => $value, 'min' => 0, 'max' => 100);
+
+		return "<input "._parse_form_attributes($data, $defaults).$extra." />";
+	}
+}
+
 // ------------------------------------------------------------------------
 
 /**
