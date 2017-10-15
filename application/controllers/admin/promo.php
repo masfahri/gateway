@@ -75,6 +75,13 @@ class Promo extends Admin_Controller {
         }
         //$this->data['promo'] = $this->m_promo->get_promokelas();
     }
+     public function delete($id) {
+        if ($this->m_promo->delete($id)) {
+            $this->m_promo->del_promo($id);
+            $this->session->set_flashdata('success', 'Room deleted');
+            redirect('admin/rooms');
+        }
+    }
 
     public function edit($id) {
         $this->data['promo'] = $this->m_promo->get_promo($id);

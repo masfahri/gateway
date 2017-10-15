@@ -23,29 +23,30 @@ echo form_open_multipart('admin/promo/add', $attributes);
             <h4 class="modal-title" id="myModalLabel">Add Berita & Artikel</h4>
         </div>
         <div class="modal-body">
-            <div class="col-md-12">
+           
                 <?php
                 $attributes = array('class' => 'form-horizontal', 'id' => 'myForm', 'role' => 'form');
                 echo form_open_multipart('admin/restaurant', $attributes);
                 ?>
-            </div>
-                <label for="inputJab" class="col-md-2 control-label">Pilih Kategori</label>
-                <div class="col-md-6">
-                    <select class="kelas form-control" name="idclass" id="kelas">
-                      <option value="0">Pilih Kelas</option>
-                      <?php foreach ($getAll as $get) {?>
-                        <option value="<?php echo $get['idclass'] ?>"><?php echo $get['title'] ?></option>
-                      <?php } ?>
-                    </select>
-                </div>
-                <div class="col-md-6">
-                    <select class="rooms form-control" name="idrooms" id="rooms">
-                      <option value="0">Pilih Kelas</option>
-                    </select>
+                <div class="form-group">
+                    <label for="inputJab" class="col-md-2 control-label">Pilih Kategori</label>
+                        <div class="col-md-7">
+                            <select class="kelas form-control" name="idclass" id="kelas">
+                              <option value="0">Pilih Kelas</option>
+                              <?php foreach ($getAll as $get) {?>
+                                <option value="<?php echo $get['idclass'] ?>"><?php echo $get['title'] ?></option>
+                              <?php } ?>
+                            </select>
+                        <br>
+                      
+                            <select class="rooms form-control" name="idrooms" id="rooms">
+                              <option value="0">Pilih Kelas</option>
+                            </select>
+                        </div>
                 </div>
                 <div id="rooms-content">
-                    <div class="col-md-6">
-                        <div class="row"> 
+                    
+                       
                             <div class="form-group">
                                 <label for="inputJab" class="col-md-2 control-label">Nama Diskon</label>
                                 <div class="col-md-7">
@@ -56,20 +57,28 @@ echo form_open_multipart('admin/promo/add', $attributes);
                                 </div>
                             </div> 
                             <div class="form-group">
-                                <label for="exampleInputEmail1">Mulai Diskon</label>
-                                <input type="text" class="form-control datepicker input-sm" id="input_startdate" data-validation="date" data-validation-format="yyyy/mm/dd" id="from" placeholder="Enter date" name="start_date">
-                                <input type="text" class="form-control datepicker input-sm" id="input_startdate" data-validation="date" data-validation-format="yyyy/mm/dd" id="from" placeholder="Enter date" name="start_date">
+                                <label for="inputJab" class="col-md-2 control-label">Mulai Diskon</label>
+                                 <div class="col-md-7">
+                                     <input type="text" class="form-control datepicker input-sm" data-validation="date" data-validation-format="yyyy/mm/dd" id="from" placeholder="Enter date" name="start_date">
+                                </div>
                             </div>
                             <div class="form-group">
-                                <label for="exampleInputEmail1">Akhir Diskon</label>
-                                <input type="text" class="form-control datepicker input-sm" id="input_enddate" data-validation="date" data-validation-format="yyyy/mm/dd" id="to" placeholder="Enter date" name="end_date">
+                                <label for="inputJab" class="col-md-2 control-label">Akhir Diskon</label>
+                                 <div class="col-md-7">
+                                    <input type="text" class="form-control datepicker input-sm" data-validation="date" data-validation-format="yyyy/mm/dd" id="to" placeholder="Enter date" name="end_date">
+                                 </div>
                             </div>  
                             <div class="form-group">
                                 <label for="inputJab" class="col-md-2 control-label">Diskon</label>
-                                <?php
-                                    $attr = attr(array('form-control', 'input_discount', 'discount', 'number', '1-100', 'Diskon harus berisi angka'));
-                                ?>
-                                <?php echo form_input($attr, set_value('discount', '')); ?>
+                                <div class="col-md-3">
+                                    <div class="input-group">
+                                        <?php
+                                            $attr = attr(array('form-control', 'input_discount', 'discount', 'number', '1-100', 'Diskon harus berisi angka'));
+                                        ?>
+                                        <?php echo form_number($attr, set_value('discount', '')); ?>
+                                        <span class="input-group-addon">%</span>
+                                    </div>
+                                </div>
                             </div>                     
                             <div class="form-group">
                                 <label for="inputName" class="col-md-2 control-label">Keterangan Diskon</label>
@@ -80,8 +89,8 @@ echo form_open_multipart('admin/promo/add', $attributes);
                                     <?php echo form_textarea($attr); ?>
                                 </div>
                             </div>
-                        </div>
-                    </div>
+                   
+                 
                 </div>
         </div>
         <div class="modal-footer">
