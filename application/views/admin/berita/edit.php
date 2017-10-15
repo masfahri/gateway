@@ -1,6 +1,6 @@
 <?php
 $attributes = array('class' => 'form-horizontal', 'id' => 'myForm', 'role' => 'form');
-echo form_open('', $attributes);
+echo form_open_multipart('admin/news/edit', $attributes);
 ?>
 <div class="modal-dialog">
     <div class="modal-content">
@@ -27,7 +27,18 @@ echo form_open('', $attributes);
                     <?php echo form_textarea($attr, $news->post_entry); ?>
                 </div>
             </div>
-
+            <div class="form-group">
+                <label for="inputName" class="col-lg-2 control-label">Gambar</label>
+                <div class="col-lg-8">
+                    <img src="<?php echo base_url() . 'assets/img/'.$news->featurephoto; ?>"  width="221" height="146">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="inputName" class="col-lg-2">Upload</label>
+                <div class="col-lg-8">
+                    <input name="featurephoto" type="file" />
+                </div>
+            </div>
         </div>
         <div class="modal-footer">
             <?php

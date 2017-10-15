@@ -28,7 +28,7 @@ class Promo extends Admin_Controller {
     }
 
     public function index() {
-        $this->data['promo'] = $this->m_promo->get_all(1);
+        $this->data['promo'] = $this->m_promo->get_all();
         $this->data['class'] = $this->m_kelas->get_dropdown();
         $this->data['getAll'] = $this->m_promo->getAllKelasRooms();
 
@@ -76,13 +76,13 @@ class Promo extends Admin_Controller {
         //$this->data['promo'] = $this->m_promo->get_promokelas();
     }
 
-    public function edit($id = 1) {
-        $this->data['promo'] = $this->m_promo->get(1);
+    public function edit($id) {
+        $this->data['promo'] = $this->m_promo->get_promo($id);
         $this->data['aktif'] = $this->aktif;
         $this->data['class'] = $this->m_kelas->get_dropdown();
         if ($this->input->post('update')){
             $data = $this->m_promo->array_from_post(array('idclass','title','discount','start_date','end_date','description','status'));
-            $this->m_promo->update($data,1);
+            $this->m_promo->update($data,$id);
             $this->session->set_flashdata('success', 'Promosi Updated');
             redirect('admin/promo');
         }

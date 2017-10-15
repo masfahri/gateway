@@ -12,7 +12,7 @@ echo form_open('', $attributes);
             <div class="form-group">
                 <label for="inputJab" class="col-lg-2 control-label">Kelas</label>
                 <div class="col-lg-7">
-                    <?php echo form_dropdown('idclass', $class, $promo->idclass, 'class="form-control"'); ?>
+                    <?php echo form_dropdown("idclass", $class, $promo['idpromo'], 'class="form-control"'); ?>
                 </div>
             </div>
             <div class="form-group">
@@ -21,7 +21,7 @@ echo form_open('', $attributes);
                     <?php
                     $attr = attr(array('form-control', 'input_nama', 'title', 'length', '3-100', 'Title harus berisi 3-100 karakter'));
                     ?>
-                    <?php echo form_input($attr, $promo->title); ?>
+                    <?php echo form_input($attr, $promo['title']); ?>
                 </div>
             </div>
             <div class="form-group">
@@ -39,7 +39,7 @@ echo form_open('', $attributes);
                         'data-validation-error-msg' => 'Salah memasukan tanggal masuk'
                     );
                     ?>
-                    <?php echo form_input($data, date('Y-m-d', strtotime($promo->start_date))); ?>
+                    <?php echo form_input($data, date('Y-m-d', strtotime($promo['start_date']))); ?>
                 </div>
                 <div class="col-lg-1">
                     <p class="text-center">-</p>
@@ -57,7 +57,7 @@ echo form_open('', $attributes);
                         'data-validation-error-msg' => 'Salah memasukan tanggal masuk'
                     );
                     ?>
-                    <?php echo form_input($data, date('Y-m-d', strtotime($promo->end_date))); ?>
+                    <?php echo form_input($data, date('Y-m-d', strtotime($promo['end_date']))); ?>
                 </div>
             </div>
             <div class="form-group">
@@ -67,7 +67,7 @@ echo form_open('', $attributes);
                     $attr = attr(array('form-control', 'input_nama', 'discount', 'number', '', 'Angka!!'));
                     $attr['data-validation-allowing'] = 'range[0;100]';
                     ?>
-                    <?php echo form_input($attr, $promo->discount); ?>
+                    <?php echo form_input($attr, $promo['discount']); ?>
                 </div>
             </div>
             <div class="form-group">
@@ -76,13 +76,13 @@ echo form_open('', $attributes);
                     <?php
                     $attr = attr(array('form-control', 'input_desc', 'description', 'length', '3-1000', 'Harga harus berisi 3-1000 karakter'));
                     ?>
-                    <?php echo form_textarea($attr, $promo->description); ?>
+                    <?php echo form_textarea($attr, $promo['description']); ?>
                 </div>
             </div>
             <div class="form-group">
                 <label for="inputJab" class="col-lg-2 control-label">Status</label>
                 <div class="col-lg-7">
-                    <?php echo form_dropdown('status', $aktif, $promo->status, 'class="form-control"'); ?>
+                    <?php echo form_dropdown('status', $aktif, $promo['status'], 'class="form-control"'); ?>
                 </div>
             </div>
         </div>

@@ -11,6 +11,7 @@
             <th>Title</th>
             <th>Dibuat</th>    
             <th>Tgl</th>
+            <th>Gambar</th>
             <th>&nbsp;</th>
         </tr>
     </thead>
@@ -24,6 +25,7 @@
                     <td><?php echo $p['title']; ?></td>
                     <td><?php echo $p['create_by']; ?></td>
                     <td><?php echo $p['create_date']; ?></td>
+                    <td><img src="<?php echo base_url() . 'assets/img/'.$p['featurephoto']; ?>"  width="221" height="146"></td>
                     <td>
                         <a href="<?php echo base_url('admin/news/edit/' . $p['post_id']); ?>" class="btn btn-default btn-xs btn-primary" data-target="#telo" role="button" data-toggle="modal"><span class="glyphicon glyphicon-edit"></span> Edit</a>
                         <?php echo btn_delete('admin/news/delete/' . $p['post_id']); ?>
