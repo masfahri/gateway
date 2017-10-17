@@ -244,6 +244,20 @@ if ( ! function_exists('form_upload'))
 	}
 }
 
+if ( ! function_exists('form_up'))
+{
+	function form_up($data = '', $value = '', $extra = '')
+	{
+		if ( ! is_array($data))
+		{
+			$data = array('name' => $data);
+		}
+
+		$data['type'] = 'file';
+		return form_input($data, $value, $extra);
+	}
+}
+
 // ------------------------------------------------------------------------
 
 /**

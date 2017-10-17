@@ -17,8 +17,7 @@ class M_promo extends MY_Model {
         parent::__construct();
         parent::set_tabel('promote', 'idpromo');
 
-<<<<<<< HEAD
-=======
+
     }
     public function del_promo($id) {
         $q = $this->db->query('Delete from promote where idpromo = ' . $id);
@@ -26,7 +25,7 @@ class M_promo extends MY_Model {
             return TRUE;
         }
         return FALSE;
->>>>>>> origin/hapus-promo
+
     }
 
     public function getAllKelasRooms($value='')

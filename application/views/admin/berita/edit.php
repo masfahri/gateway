@@ -1,6 +1,6 @@
 <?php
-$attributes = array('class' => 'form-horizontal', 'id' => 'myForm', 'role' => 'form');
-echo form_open_multipart('admin/news/edit', $attributes);
+$attributes = array('class' => 'form-horizontal', 'id' => 'myForm', 'role' => 'form', );
+echo form_open_multipart('admin/news/edit/'. $news->post_id, $attributes);
 ?>
 <div class="modal-dialog">
     <div class="modal-content">
@@ -36,7 +36,15 @@ echo form_open_multipart('admin/news/edit', $attributes);
             <div class="form-group">
                 <label for="inputName" class="col-lg-2">Upload</label>
                 <div class="col-lg-8">
-                    <input name="featurephoto" type="file" />
+                     <?php
+                    $data = array(
+                        'name' => 'featurephoto',
+                        'data-validation' => "required mime size",
+                        'data-validation-allowing' => "jpg, png, gif",
+                        'data-validation-max-size' => "2M"
+                    );
+                    ?>
+                    <?php echo form_up($data); ?>
                 </div>
             </div>
         </div>
