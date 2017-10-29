@@ -32,17 +32,17 @@ function get_menu($array, $child = FALSE) {
     $str = '';
 
     if (count($array)) {
-        $str .= $child == FALSE ? '<ul class="nav navbar-nav nav-pills">' . PHP_EOL : '<ul class="dropdown-menu">' . PHP_EOL;
+        $str .= $child == FALSE ? '<ul class="menu">' . PHP_EOL : '<ul class="sub-menu">' . PHP_EOL;
 
         foreach ($array as $item) {
             $active = $CI->uri->segment(1) == $item['slug'] ? TRUE : FALSE;
             if (isset($item['children']) && count($item['children'])) {
-                $str .= $active ? '<li class="dropdown active">' : '<li class="dropdown">';
-                $str .= '<a  class="dropdown-toggle" data-toggle="dropdown" href="' . site_url(e($item['slug'])) . '">' . e($item['title']);
-                $str .= '<b class="caret"></b></a>' . PHP_EOL;
-                $str .= get_menu($item['children'], TRUE);
+                $str .= $active ? '<li class="current-menu-item">' : '<li class="current-menu-item">';
+                // $str .= '<a href="' . site_url(e($item['slug'])) . '">' . e($item['title']);
+                // $str .= '<b class="caret"></b></a>' . PHP_EOL;
+                // $str .= get_menu($item['children'], TRUE);
             } else {
-                $str .= $active ? '<li class="active">' : '<li>';
+                $str .= $active ? '<li class="current-menu-item">' : '<li>';
                 $str .= '<a href="' . site_url($item['slug']) . '">' . e($item['title']) . '</a>';
             }
             $str .= '</li>' . PHP_EOL;

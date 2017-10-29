@@ -46,10 +46,15 @@ Class Pages extends Frontend_Controller {
     private function _homepage() {
         $this->load->model('m_slide');
         $this->data['promo'] = $this->m_promo->get_promokelas();
+        // var_dump($this->data['promo']);die; 
         $this->data['news'] = $this->m_news->get_all();
         $this->data['slides'] = $this->m_slide->get_all();
+        $this->data['kelas'] = $this->m_kelas->get_gambardefault();
+        foreach ($this->data['kelas'] as $k => $v) {
+            $fas = $this->m_kelas->get_aktiffac($this->data['kelas'][$k]->idclass);
+            $this->data['kelas'][$k]->fasilitas = $fas;
+        }
     }
-
     private function _news() {
         $initial_id = $this->uri->segment(2);
         $this->load->model('m_news');
